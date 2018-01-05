@@ -14,3 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/login',function(){
+    return "<h2>Please Login</h2>";
+});
