@@ -1,0 +1,5 @@
+study
+
+1. yeild is like section we will provide the name of yield and pass the data in second parameter eg
+@yield('yield-name')//define yeild
+@section('yield-name','hellow world')// calling the yield funciton

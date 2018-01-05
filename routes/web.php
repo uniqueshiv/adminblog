@@ -12,8 +12,17 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('user/blogs');
+})->name('home');
+
+Route::get('post',function(){
+  return view('user/post');
+})->name('post');
+
+Route::get('admin/posts',function(){
+  return view('admin.post.index');
+})->name('post');
+
 Route::get('/login',function(){
     return "<h2>Please Login</h2>";
 });
