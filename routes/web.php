@@ -11,18 +11,22 @@
 |
 */
 
-Route::get('/', function () {
-    return view('user/blogs');
-})->name('home');
+//User routes
+Route::group(['namespace'=>'User'],function(){
+    Route::get('/','HomeController@index');
+    Route::get('post','PostController@index')->name('post');
+});
+// Route::get('post',function(){
+//   return view('user/post');
+// })->name('post');
+//
+// Route::get('admin/posts',function(){
+//   return view('admin.post.index');
+// })->name('post');
 
-Route::get('post',function(){
-  return view('user/post');
-})->name('post');
-
-Route::get('admin/posts',function(){
-  return view('admin.post.index');
-})->name('post');
-
-Route::get('/login',function(){
-    return "<h2>Please Login</h2>";
+//admin routes
+Route::group(['namespace'=>'Admin'],function(){
+  Route::resource('admin/post','PostController');
+  Route::resource('admin/tag','TagController');
+  Route::resource('admin/category','CategoryController');
 });
