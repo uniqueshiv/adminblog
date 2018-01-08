@@ -1,0 +1,6 @@
+.float-left{
+  margin-right:10px;
+}
+.dataTables_paginate,.dataTables_filter{
+  float:right;
+}

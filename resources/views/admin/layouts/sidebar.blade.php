@@ -33,7 +33,7 @@
       <li class="header">HEADER</li>
       <!-- Optionally, you can add icons to the links -->
       <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Link</span></a></li>
-      <li><a href="#"><i class="fa fa-users"></i> <span>Users</span></a></li>
+      <li><a href="{{route('user.index')}}"><i class="fa fa-users"></i> <span>Users</span></a></li>
       <li class="treeview">
         <a href="#"><i class="fa fa-clipboard"></i> <span>Posts</span>
           <span class="pull-right-container">
@@ -41,10 +41,10 @@
             </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="#">All Posts</a></li>
-          <li><a href="#">Add New</a></li>
-          <li><a href="#">Category</a></li>
-          <li><a href="#">Tags</a></li>
+          <li><a href="{{route('post.index')}}">All Posts</a></li>
+          <li><a href="{{route('post.create')}}">Add New</a></li>
+          <li><a href="{{route('category.index')}}">Category</a></li>
+          <li><a href="{{route('tag.index')}}">Tags</a></li>
         </ul>
       </li>
       <li class="treeview">

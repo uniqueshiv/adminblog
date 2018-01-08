@@ -6,7 +6,7 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      Add New Post
+     Edit Post
       <!-- <small>Optional description</small> -->
     </h1>
     <!-- <ol class="breadcrumb">
@@ -16,25 +16,28 @@
   </section>
 
   <!-- Main content -->
+
   <section class="content container-fluid">
     <div class="row">
-      <form role="form" action="{{route('post.store')}}" method="POST">
+      <form role="form" action="{{route('post.update',$post->id)}}" method="POST">
       <div class="col-md-6">
         {{ csrf_field()}}
+        {{method_field('PUT')}}
         @include('includes.messages')
+
         <div class="form-group">
           <label>Post Title</label>
-          <input type="text" class="form-control" name="title" placeholder="Enter The Title...">
+          <input type="text" class="form-control" name="title" value="{{$post->title}}" placeholder="Enter The Title...">
         </div>
 
         <div class="form-group">
           <label>Post Sub Title</label>
-          <input type="text" class="form-control" name="subtitle" placeholder="Enter Sub Title...">
+          <input type="text" class="form-control" name="subtitle"   value="{{$post->subtitle}}" placeholder="Enter Sub Title...">
         </div>
 
         <div class="form-group">
           <label>Post Slug</label>
-          <input type="text" class="form-control" name="slug" placeholder="Post slug">
+          <input type="text" class="form-control" name="slug"  value="{{$post->slug}}" placeholder="Post slug">
         </div>
       </div>
       <div class="col-md-6">
@@ -45,7 +48,7 @@
 
         <div class="checkbox">
           <label>
-            <input type="checkbox" value="1"  name="status"> Publish
+            <input type="checkbox" name="status" value='1' @if($post->status==1) checked @endif> Publish
           </label>
         </div>
       </div>
@@ -67,6 +70,7 @@
           <!-- /.box-header -->
           <div class="box-body pad">
               <textarea id="editor1" name="body" rows="10" cols="100">
+              {{$post->body}}
               </textarea>
 
           </div>

@@ -24,40 +24,29 @@
       <div class="col-xs-12">
         <div class="box">
           <div class="box-header with-border">
-            <a href="{{route('post.create')}}" class="btn btn-primary pull-right1">Add New Post</a>
+            <a href="{{route('tag.create')}}" class="btn btn-primary pull-right1">Add New Tag</a>
           </div>
           <div class="box-body">
             <table id="tags" class="table table-bordered table-hover">
               <thead>
                   <tr>
                     <th>S.NO</th>
-                    <th>Title</th>
+                    <th>Name</th>
                     <th>Slug</th>
-                    <th>body</th>
+                    <th>Date</th>
                     <th>Edit</th>
                     <th>Delete</th>
                   </tr>
               </thead>
               <tbody>
-              @foreach($posts as $post)
+              @foreach($tags as $tag)
               <tr>
                 <td>{{$loop->index+1}} </td>
-                <td>{{$post->title}}</td>
-                <td>{{$post->slug}}</td>
-                <td>{{$post->body}}</td>
-                <td>
-                <form id="deleteform-{{$post->id}}" method="post" action="{{route('post.destroy',$post->id)}}">
-                    {{csrf_field()}}
-                    {{method_field('DELETE')}}
-                </form>
-                <a onclick="
-                if(confirm('Are you Sure, you want delete this')){
-                  event.preventDefault();
-                  document.getElementById('deleteform-{{$post->id}}').submit();
-                }else{
-                  event.preventDefault();
-                }" href="{{route('post.index')}}" class="float-left btn btn-danger"><i class="fa fa-trash-o"></i></a></td>
-                <td><a href="{{route('post.edit',$post->id)}}" class="btn btn-primary"><i class="fa fa fa-pencil"></i></a></td>
+                <td>{{$tag->name}}</td>
+                <td>{{$tag->slug}}</td>
+                <td>{{$tag->created_at}}</td>
+                <td><a href="" class="float-left"><span class="label label-success">Edit</span></a></td>
+                <td><a href=""><span class="label label-danger"> delete</span></a></td>
 
               </tr>
               @endforeach
