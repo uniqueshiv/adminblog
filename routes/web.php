@@ -17,7 +17,6 @@ Route::group(['namespace'=>'User'],function(){
     Route::get('post','PostController@index')->name('post');
 });
 
-
 // Route::get('post',function(){
 //   return view('user/post');
 // })->name('post');

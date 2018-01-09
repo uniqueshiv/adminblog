@@ -45,7 +45,7 @@
                 <td>{{$tag->name}}</td>
                 <td>{{$tag->slug}}</td>
                 <td>{{$tag->created_at}}</td>
-                <td><a href="" class="float-left"><span class="label label-success">Edit</span></a></td>
+                <td><a href="{{route('tag.edit',$tag->id)}}" class="float-left"><span class="label label-success">Edit</span></a></td>
                 <td><a href=""><span class="label label-danger"> delete</span></a></td>
 
               </tr>
