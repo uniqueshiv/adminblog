@@ -6,7 +6,7 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-    Edit Tag
+      Edit Category
       <small>Optional description</small>
     </h1>
     <ol class="breadcrumb">
@@ -22,26 +22,28 @@
       | Your Page Content Here |
       -------------------------->
       <div class="box">
-             <form role="form" action="{{route('tag.update',$tag->id)}}" method="post">
+<!-- {{$categories}} -->
+             <form role="form" action="{{route('category.update',$categories->id)}}" method="post">
             {{ csrf_field()}}
-{{method_field('PUT')}}
+            {{method_field('PUT')}}
               <div class="box-body">
                 <div class="col-md-5">
 
                   @include('includes.messages')
                 <div class="form-group">
-                  <label for="tagname">Tag Name</label>
-                  <input type="text" class="form-control" value="{{$tag->name}}" id="tagname" name="name" placeholder="Enter tag name!">
+                  <label for="tagname">Category Name</label>
+                  <input type="text" class="form-control" id="tagname" name="name" value="{{$categories->name}}" placeholder="Enter tag name!">
                 </div>
                 <div class="form-group">
-                  <label for="slug">Slug</label>
-                  <input type="text" class="form-control" value="{{$tag->slug}}" id="slug" name="slug" placeholder="Enter tag Slug">
+                  <label for="slug">Category Slug</label>
+                  <input type="text" class="form-control" id="slug" name="slug" value="{{$categories->slug}}" placeholder="Enter tag Slug">
                 </div>
               </div>
 
               <div class="col-md-12 ">
+                  <a href="{{route('category.index')}}" class="btn btn-warning pull-right">Back</a>
                 <button type="submit" class="btn btn-primary pull-right">Update</button>
-                <a href="{{route('tag.index')}}" style="margin-right:10px;" class="btn btn-warning pull-right"> Back</a>
+
               </div>
               </div>
 

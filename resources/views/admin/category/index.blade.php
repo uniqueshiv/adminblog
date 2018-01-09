@@ -45,8 +45,19 @@
                 <td>{{$cat->name}}</td>
                 <td>{{$cat->slug}}</td>
                 <td>{{$cat->created_at}}</td>
-                <td><a href="" class="float-left"><span class="label label-success">Edit</span></a></td>
-                <td><a href=""><span class="label label-danger"> delete</span></a></td>
+                <td><a href="{{route('category.edit',$cat->id)}}" class="float-left"><span class="label label-success">Edit</span></a></td>
+                <td>
+                  <form action="{{route('category.update',$cat->id)}}" method="post" id="category-form-{{$cat->id}}">
+                    {{csrf_field()}}
+                    {{method_field('PUT')}}
+                  </form>
+                  <a href="" onclick="if(confirm('are you sure you want delete')){
+                  event.preventDefault();
+                  document.getElementById('category-form-{{$cat->id}}').submit();
+
+                }else{
+                  event.preventDefault();
+                }"><span class="label label-danger"> delete</span></a></td>
 
               </tr>
               @endforeach

@@ -46,7 +46,17 @@
                 <td>{{$tag->slug}}</td>
                 <td>{{$tag->created_at}}</td>
                 <td><a href="{{route('tag.edit',$tag->id)}}" class="float-left"><span class="label label-success">Edit</span></a></td>
-                <td><a href=""><span class="label label-danger"> delete</span></a></td>
+                <td>
+                  <form action="{{route('tag.destroy',$tag->id)}}" method="post" id="tagform-{{$tag->id}}">
+                    {{csrf_field()}}
+                    {{method_field('DELETE')}}
+                  </form>
+                  <a href="" onclick="if(confirm('Do you really want to delete this tag?')){
+                    event.preventDefault();
+                    document.getElementById('tagform-{{$tag->id}}').submit();
+                  }else{
+                    event.preventDefault();
+                  }"><span class="label label-danger"> delete</span></a></td>
 
               </tr>
               @endforeach

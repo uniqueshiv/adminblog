@@ -82,7 +82,15 @@ class TagController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $tag=tag::find($id);
+      $this->validate($request,[
+        'name'=>'required',
+        'slug'=>'required',
+      ]);
+      $tag->name=$request->name;
+      $tag->slug=$request->slug;
+      $tag->save();
+      return redirect(route('tag.index'));
     }
 
     /**
@@ -93,6 +101,9 @@ class TagController extends Controller
      */
     public function destroy($id)
     {
-        //
+       if(tag::where('id',$id)->delete()){
+         return redirect()->back();
+       }
+
     }
 }
