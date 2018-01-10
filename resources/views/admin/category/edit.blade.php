@@ -34,7 +34,7 @@
                   <label for="tagname">Category Name</label>
                   <input type="text" class="form-control" id="tagname" name="name" value="{{$categories->name}}" placeholder="Enter tag name!">
                 </div>
-                <div class="form-group">
+                <div class="form-group">b
                   <label for="slug">Category Slug</label>
                   <input type="text" class="form-control" id="slug" name="slug" value="{{$categories->slug}}" placeholder="Enter tag Slug">
                 </div>
