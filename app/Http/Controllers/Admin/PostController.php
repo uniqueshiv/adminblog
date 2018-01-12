@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Model\user\post;
+use App\Model\user\category;
+use App\Model\user\tag;
 
 class PostController extends Controller
 {
@@ -27,7 +29,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.post.create');
+        $tags=tag::all();
+        $categories=category::all();
+        return view('admin.post.create',compact('tags','categories'));
     }
 
     /**
@@ -52,7 +56,12 @@ class PostController extends Controller
       $post->slug=$request->slug;
       $post->body=$request->body;
       $post->status=$request->status;
+      //return $request; die();
       $post->save();
+      $post->tags()->sync($request->tags);
+      $post->categories()->sync($request->categories);
+
+
       return redirect(route('post.index'));
     }
 
@@ -75,9 +84,15 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-      $post=post::where('id',$id)->first();
+      $post=post::with('tags','categories')
+                ->where('id',$id)
+                ->first();
+      $tags=tag::all();
+      $categories=category::all();
+
+
       //return $post;
-      return view('admin.post.edit',compact('post'));
+      return view('admin.post.edit',compact('post','categories','tags'));
     }
 
     /**
@@ -95,7 +110,7 @@ class PostController extends Controller
         'slug'  =>'required',
         'body'=>'required',
       ]);
-    //  return $request;
+      //return $request;
     $post=post::find($id);
     $post->title=$request->title;
     $post->subtitle=$request->subtitle;
@@ -103,6 +118,9 @@ class PostController extends Controller
     $post->body=$request->body;
     $post->status=$request->status;
     $post->save();
+    $post->tags()->sync($request->tags);
+    $post->categories()->sync($request->categories);
+
     return redirect(route('post.index'));
     }
 

@@ -51,6 +51,45 @@
             <input type="checkbox" name="status" value='1' @if($post->status==1) checked @endif> Publish
           </label>
         </div>
+
+        <div class="form-group">
+          <label>Category</label>
+          <select class="form-control select2" multiple="multiple" name="categories[]" data-placeholder="Select a State"
+                  style="width: 100%;">
+
+
+               @foreach($categories as $cat)
+                <option value="{{$cat->id}}"
+                  @foreach($post->categories as $category)
+                    @if($category->id==$cat->id)
+                      selected
+                    @endif
+                  @endforeach
+                  >
+                  {{$cat->name}}
+                 </option>
+                 @endforeach
+
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Tags</label>
+          <select class="form-control select2" name="tags[]" multiple="multiple" data-placeholder="Select a State"
+                  style="width: 100%;">
+                  @foreach($tags as $tag)
+                      <option value="{{$tag->id}}"
+                        @foreach($post->tags as $ptag)
+                          @if($ptag->id==$tag->id)
+                          selected
+                          @endif
+                        @endforeach
+                          >
+                        {{$tag->name}}
+                      </option>
+                  @endforeach
+          </select>
+        </div>
+
       </div>
       <div class="col-md-12">
         <div class="box box-info">
@@ -93,11 +132,19 @@
 </div>
 <!-- /.content-wrapper -->
 @endsection
+@push('css')
+<!-- Select2 -->
+<link rel="stylesheet" href="{{asset('admin/bower_components/select2/dist/css/select2.min.css')}}">
 
+@endpush
 @push('js')
 
-<script src="{{asset('admin//bower_components/ckeditor/ckeditor.js')}}"></script><script>
+<!-- <script src="{{asset('admin/bower_components/ckeditor/ckeditor.js')}}"></script> -->
+<script src="//cdn.ckeditor.com/4.8.0/full/ckeditor.js"></script>
+<script src="{{asset('admin/bower_components/select2/dist/js/select2.full.min.js')}}"></script>
+<script>
   $(function () {
+   $('.select2').select2();
     CKEDITOR.replace('editor1')
   })
 </script>

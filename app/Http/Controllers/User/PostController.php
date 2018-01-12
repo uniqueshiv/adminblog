@@ -4,10 +4,12 @@ namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Model\user\post;
 
 class PostController extends Controller
 {
-  Public function index(){
-    return view('user/post');
+  public function post(post $post){
+      //return $post;
+      return view('user/post',compact('post'));
   }
 }
