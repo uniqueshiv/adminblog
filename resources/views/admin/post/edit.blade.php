@@ -19,7 +19,7 @@
 
   <section class="content container-fluid">
     <div class="row">
-      <form role="form" action="{{route('post.update',$post->id)}}" method="POST">
+      <form role="form" action="{{route('post.update',$post->id)}}" method="POST" enctype="multipart/form-data">
       <div class="col-md-6">
         {{ csrf_field()}}
         {{method_field('PUT')}}
@@ -43,7 +43,7 @@
       <div class="col-md-6">
         <div class="form-group">
           <label for="exampleInputFile">Feature Image</label>
-          <input type="file" id="exampleInputFile" name="file">
+          <input type="file" id="image" name="image" value="">
         </div>
 
         <div class="checkbox">

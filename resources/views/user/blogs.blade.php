@@ -2,7 +2,7 @@
 
 @section('bg-img',asset('/user/img/home-bg.jpg'))
 
-@section('main-content');
+@section('main-content')
 
 <!-- Main Content -->
 <div class="container">

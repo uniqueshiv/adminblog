@@ -44,7 +44,7 @@
                 <td>{{$loop->index+1}} </td>
                 <td>{{$post->title}}</td>
                 <td>{{$post->slug}}</td>
-                <td>{{$post->body}}</td>
+                <td>{!! \Illuminate\Support\Str::words($post->body, 10,'....')  !!}</td>
                 <td>
                 <form id="deleteform-{{$post->id}}" method="post" action="{{route('post.destroy',$post->id)}}">
                     {{csrf_field()}}

@@ -18,7 +18,7 @@
   <!-- Main content -->
   <section class="content container-fluid">
     <div class="row">
-      <form role="form" action="{{route('post.store')}}" method="POST">
+      <form role="form" action="{{route('post.store')}}" method="POST" enctype="multipart/form-data">
       <div class="col-md-6">
         {{ csrf_field()}}
         @include('includes.messages')
@@ -40,7 +40,7 @@
       <div class="col-md-6">
         <div class="form-group">
           <label for="exampleInputFile">Feature Image</label>
-          <input type="file" id="exampleInputFile" name="file">
+          <input type="file" id="exampleInputFile" name="image">
         </div>
 
         <div class="checkbox">
