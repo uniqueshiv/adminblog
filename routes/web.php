@@ -16,6 +16,7 @@ Route::group(['namespace'=>'User'],function(){
     Route::get('post/{post}','PostController@post')->name('post');
 
     Route::get('post/tag/{tag}','HomeController@tag')->name('tag');
+
     Route::get('post/category/{category}','HomeController@category')->name('category');
 });
 
@@ -41,6 +42,11 @@ Route::group(['namespace'=>'Admin'],function(){
   //User RouteServiceProvider
 
   Route::resource('admin/user','UserController');
+
+  //admin Routes
+  Route::get('admin-login','Auth\LoginController@showLoginForm')->name('admin.login');
+  Route::post('admin-login','Auth\LoginController@login');
+
 
 });
 
